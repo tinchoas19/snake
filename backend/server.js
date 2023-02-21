@@ -109,4 +109,4 @@ function emitGameOver(roomName, winner) {
   io.sockets.in(roomName).emit("gameOver", JSON.stringify({ winner }));
 }
 
-io.listen(process.env.PORT | 3009);
+io.listen(process.env.PORT | 8080);
