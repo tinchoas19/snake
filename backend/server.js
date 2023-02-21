@@ -2,7 +2,7 @@ const server = require("http").createServer();
 const io = require("socket.io")(server, {
   allowEIO3: true,
   cors: {
-    origin: "http://127.0.0.1:8080",
+    origin: process.env.fronturl | "http://127.0.0.1:8080",
     //origin: "https://buenosairesrawfood.com.ar/snake/front",
     methods: ["GET", "POST"],
     credentials: true,
@@ -109,4 +109,4 @@ function emitGameOver(roomName, winner) {
   io.sockets.in(roomName).emit("gameOver", JSON.stringify({ winner }));
 }
 
-io.listen(3009);
+io.listen(process.env.PORT | 3009);
